@@ -7,6 +7,7 @@ body {
 
 .wrapper {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 .info-section {
@@ -16,6 +17,7 @@ body {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
 }
 
 .container {
@@ -30,7 +32,7 @@ body {
     margin-bottom: 20px;
 }
 
-::placeholder{
+::placeholder {
     font-family: "Raleway", sans-serif;
     text-align: left;
     padding: 5px;
@@ -46,7 +48,7 @@ input[type="file"], textarea {
     margin-bottom: 10px;
 }
 
-button , #file-upload-button{
+button, input #file-upload-button {
     padding: 10px;
     background-color: #28a745;
     color: #fff;
@@ -75,4 +77,34 @@ button:hover {
 .highlight {
     background-color: #ffeb3b; /* Highlight color */
     font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Stack sections vertically */
+    }
+
+    .info-section {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Reduce padding on small screens */
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5em; /* Smaller headings */
+    }
+
+    button {
+        width: 100%; /* Full width buttons */
+    }
+
+    input[type="file"], textarea {
+        font-size: 0.9em; /* Smaller input text */
+    }
 }
