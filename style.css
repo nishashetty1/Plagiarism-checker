@@ -1,0 +1,78 @@
+body {
+    font-family: "Edu AU VIC WA NT Guides", cursive;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.info-section {
+    flex: 1;
+    padding: 20px;
+    margin-right: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    flex: 2;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section {
+    margin-bottom: 20px;
+}
+
+::placeholder{
+    font-family: "Raleway", sans-serif;
+    text-align: left;
+    padding: 5px;
+}
+
+h1, h2, h3 {
+    color: #333;
+    font-family: "Edu AU VIC WA NT Guides", cursive;
+}
+
+input[type="file"], textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button , #file-upload-button{
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#results {
+    margin-top: 20px;
+    word-wrap: break-word;
+    font-family: "Raleway", sans-serif;
+}
+
+.matched-segments {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    white-space: pre-wrap;
+}
+
+.highlight {
+    background-color: #ffeb3b; /* Highlight color */
+    font-weight: bold;
+}

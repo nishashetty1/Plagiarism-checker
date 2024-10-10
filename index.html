@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Plagiarism Detector & DNA Matcher</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="info-section">
+            <h2>About LCS Algorithm</h2>
+            <p>The Longest Common Subsequence (LCS) algorithm finds the longest subsequence common to two sequences.
+                Unlike substrings, subsequences are not required to occupy consecutive positions within the original
+                sequences.</p>
+            <h3>How It Works</h3>
+            <ul>
+                <li>The algorithm uses dynamic programming to build a table that stores the lengths of the longest
+                    common subsequences for different segments of the input sequences.</li>
+                <li>It backtracks through the table to find the actual LCS.</li>
+                <li>The resulting length and the sequence itself are then displayed to the user.</li>
+            </ul>
+            <h3>Tool Functionality</h3>
+            <ul>
+                <li> The user uploads two files or enters DNA sequences.</li>
+                <li>The program reads the input, processes it to find the LCS, calculates a similarity score, and
+                    updates the display with the results.</li>
+                <li>Highlighted segments show which parts of the texts are similar based on the LCS.</li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h1>Plagiarism Detector & DNA Matcher</h1>
+            <div class="upload-section">
+                <h2>Upload Text Files</h2>
+                <input type="file" id="file1" accept=".txt">
+                <input type="file" id="file2" accept=".txt">
+                <button id="checkPlagiarism">Check Plagiarism</button>
+            </div>
+
+            <div class="upload-section">
+                <h2>Upload DNA Sequences</h2>
+                <textarea id="dna1" placeholder="Enter DNA Sequence 1"></textarea>
+                <textarea id="dna2" placeholder="Enter DNA Sequence 2"></textarea>
+                <button id="checkDNA">Check DNA Match</button>
+            </div>
+
+            <div id="results">
+                <h2>Results</h2>
+                <p id="lcsLength"></p>
+                <p id="similarityScore"></p>
+                <h3>Matched Segments</h3>
+                <div id="matchedSegments" class="matched-segments"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
