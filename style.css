@@ -1,20 +1,28 @@
+:root {
+    --bg: #021526;
+    --prim: #E68369;
+    --sec: #03346E;
+    --accent: #6EACDA;
+    --txt: #E2E2B6;
+}
+
 body {
     font-family: "Edu AU VIC WA NT Guides", cursive;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: var(--bg);
 }
 
 .wrapper {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
 }
 
 .info-section {
     flex: 1;
     padding: 20px;
     margin-right: 20px;
-    background: #fff;
+    background: var(--prim);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-weight: 600;
@@ -23,7 +31,7 @@ body {
 .container {
     flex: 2;
     padding: 20px;
-    background: #fff;
+    background: var(--prim);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -38,27 +46,38 @@ body {
     padding: 5px;
 }
 
-h1, h2, h3 {
-    color: #333;
+textarea {
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--bg);
     font-family: "Edu AU VIC WA NT Guides", cursive;
 }
 
-input[type="file"], textarea {
+input[type="file"],
+textarea {
     width: 100%;
     margin-bottom: 10px;
 }
 
-button, input #file-upload-button {
+button, input::file-selector-button  {
     padding: 10px;
-    background-color: #28a745;
+    background-color: var(--accent);
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #218838;
+button:hover, input::file-selector-button:hover {
+    background-color: #1565ac;
+    transition: 0.5s;
+    transform: scale(1.025);
 }
 
 #results {
@@ -72,39 +91,51 @@ button:hover {
     padding: 10px;
     background-color: #f9f9f9;
     white-space: pre-wrap;
+    border-radius: 8px;
 }
 
 .highlight {
-    background-color: #ffeb3b; /* Highlight color */
+    background-color: #ffeb3b;
+    /* Highlight color */
     font-weight: bold;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .wrapper {
-        flex-direction: column; /* Stack sections vertically */
+        flex-direction: column;
+        /* Stack sections vertically */
     }
 
     .info-section {
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 20px; /* Add bottom margin for spacing */
+        margin-right: 0;
+        /* Remove right margin */
+        margin-bottom: 20px;
+        /* Add bottom margin for spacing */
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding: 10px; /* Reduce padding on small screens */
+        padding: 10px;
+        /* Reduce padding on small screens */
     }
 
-    h1, h2, h3 {
-        font-size: 1.5em; /* Smaller headings */
+    h1,
+    h2,
+    h3 {
+        font-size: 1.5em;
+        /* Smaller headings */
     }
 
     button {
-        width: 100%; /* Full width buttons */
+        width: 100%;
+        /* Full width buttons */
     }
 
-    input[type="file"], textarea {
-        font-size: 0.9em; /* Smaller input text */
+    input[type="file"],
+    textarea {
+        font-size: 0.9em;
+        /* Smaller input text */
     }
 }

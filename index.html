@@ -29,6 +29,7 @@
             <p>The Longest Common Subsequence (LCS) algorithm finds the longest subsequence common to two sequences.
                 Unlike substrings, subsequences are not required to occupy consecutive positions within the original
                 sequences.</p>
+
             <h3>How It Works</h3>
             <ul>
                 <li>The algorithm uses dynamic programming to build a table that stores the lengths of the longest
@@ -36,13 +37,15 @@
                 <li>It backtracks through the table to find the actual LCS.</li>
                 <li>The resulting length and the sequence itself are then displayed to the user.</li>
             </ul>
+
             <h3>Tool Functionality</h3>
             <ul>
-                <li> The user uploads two files or enters DNA sequences.</li>
+                <li>You need to upload 2 text files.</li>
                 <li>The program reads the input, processes it to find the LCS, calculates a similarity score, and
                     updates the display with the results.</li>
                 <li>Highlighted segments show which parts of the texts are similar based on the LCS.</li>
             </ul>
+
         </div>
 
         <div class="container">
@@ -52,13 +55,6 @@
                 <input type="file" id="file1" accept=".txt">
                 <input type="file" id="file2" accept=".txt">
                 <button id="checkPlagiarism">Check Plagiarism</button>
-            </div>
-
-            <div class="upload-section">
-                <h2>Upload DNA Sequences</h2>
-                <textarea id="dna1" placeholder="Enter DNA Sequence 1"></textarea>
-                <textarea id="dna2" placeholder="Enter DNA Sequence 2"></textarea>
-                <button id="checkDNA">Check DNA Match</button>
             </div>
 
             <div id="results">

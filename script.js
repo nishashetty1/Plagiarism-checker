@@ -1,12 +1,12 @@
-function longestCommonSubsequence(text1, text2) {
-    const m = text1.length, n = text2.length;
+function longestCommonSubsequence(words1, words2) {
+    const m = words1.length, n = words2.length;
     const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
     const lcs = [];
 
     // Calculate LCS length and build the DP table
     for (let i = 1; i <= m; i++) {
         for (let j = 1; j <= n; j++) {
-            if (text1[i - 1] === text2[j - 1]) {
+            if (words1[i - 1] === words2[j - 1]) {
                 dp[i][j] = dp[i - 1][j - 1] + 1;
             } else {
                 dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
@@ -17,8 +17,8 @@ function longestCommonSubsequence(text1, text2) {
     // Backtrack to find the actual LCS
     let i = m, j = n;
     while (i > 0 && j > 0) {
-        if (text1[i - 1] === text2[j - 1]) {
-            lcs.unshift(text1[i - 1]); // Prepend to the result
+        if (words1[i - 1] === words2[j - 1]) {
+            lcs.unshift(words1[i - 1]); // Prepend to the result
             i--;
             j--;
         } else if (dp[i - 1][j] >= dp[i][j - 1]) {
@@ -30,7 +30,7 @@ function longestCommonSubsequence(text1, text2) {
 
     return {
         length: dp[m][n],
-        sequence: lcs.join('')
+        sequence: lcs
     };
 }
 
@@ -40,15 +40,18 @@ function processFiles(file1, file2) {
 
     reader1.onload = function(event) {
         const text1 = event.target.result.replace(/[^\w\s]|_/g, "").toLowerCase();
-        
+        const words1 = text1.split(/\s+/);
+
         reader2.onload = function(event) {
             const text2 = event.target.result.replace(/[^\w\s]|_/g, "").toLowerCase();
-            const { length: lcsLength, sequence: lcsSequence } = longestCommonSubsequence(text1, text2);
-            const similarityScore = (lcsLength / Math.max(text1.length, text2.length)) * 100;
+            const words2 = text2.split(/\s+/);
+            
+            const { length: lcsLength, sequence: lcsSequence } = longestCommonSubsequence(words1, words2);
+            const similarityScore = (lcsLength / Math.max(words1.length, words2.length)) * 100;
 
             document.getElementById('lcsLength').innerText = `LCS Length: ${lcsLength}`;
             document.getElementById('similarityScore').innerText = `Similarity Score: ${similarityScore.toFixed(2)}%`;
-            highlightMatchedSegments(text1, text2, lcsSequence);
+            highlightMatchedSegments(words1, words2, lcsSequence);
         };
         reader2.readAsText(file2);
     };
@@ -56,7 +59,7 @@ function processFiles(file1, file2) {
     reader1.readAsText(file1);
 }
 
-function highlightMatchedSegments(text1, text2, lcsSequence) {
+function highlightMatchedSegments(words1, words2, lcsSequence) {
     if (lcsSequence.length === 0) {
         document.getElementById('matchedSegments').innerHTML = `
             <strong>Text 1:</strong><br>
@@ -67,23 +70,14 @@ function highlightMatchedSegments(text1, text2, lcsSequence) {
         return;
     }
 
-    let index = 0;
-    const highlightedText1 = text1.split('').map(char => {
-        if (lcsSequence[index] === char) {
-            index++;
-            return `<span class="highlight">${char}</span>`;
-        }
-        return char;
-    }).join('');
+    // Highlight matched words in both texts
+    const highlightedText1 = words1.map(word => {
+        return lcsSequence.includes(word) ? `<span class="highlight">${word}</span>` : word;
+    }).join(' ');
 
-    index = 0; // Reset for second text
-    const highlightedText2 = text2.split('').map(char => {
-        if (lcsSequence[index] === char) {
-            index++;
-            return `<span class="highlight">${char}</span>`;
-        }
-        return char;
-    }).join('');
+    const highlightedText2 = words2.map(word => {
+        return lcsSequence.includes(word) ? `<span class="highlight">${word}</span>` : word;
+    }).join(' ');
 
     document.getElementById('matchedSegments').innerHTML = `
         <strong>Text 1:</strong><br>
@@ -103,17 +97,3 @@ document.getElementById('checkPlagiarism').addEventListener('click', () => {
     }
 });
 
-document.getElementById('checkDNA').addEventListener('click', () => {
-    const dna1 = document.getElementById('dna1').value.trim();
-    const dna2 = document.getElementById('dna2').value.trim();
-    if (dna1 && dna2) {
-        const { length: lcsLength, sequence: lcsSequence } = longestCommonSubsequence(dna1, dna2);
-        const similarityScore = (lcsLength / Math.max(dna1.length, dna2.length)) * 100;
-
-        document.getElementById('lcsLength').innerText = `LCS Length: ${lcsLength}`;
-        document.getElementById('similarityScore').innerText = `Similarity Score: ${similarityScore.toFixed(2)}%`;
-        highlightMatchedSegments(dna1, dna2, lcsSequence);
-    } else {
-        alert('Please enter both DNA sequences.');
-    }
-});
