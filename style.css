@@ -1,9 +1,9 @@
 :root {
-    --bg: #021526;
-    --prim: #E68369;
-    --sec: #03346E;
-    --accent: #6EACDA;
-    --txt: #E2E2B6;
+    --bg: #160e0f;
+    --text: #f4eded;
+    --prim: #c8a8aa;
+    --sec: #614b3d;
+    --accent: #ab9a79;
 }
 
 body {
@@ -26,6 +26,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-weight: 600;
+    animation: float 6s infinite;
 }
 
 .container {
@@ -34,6 +35,7 @@ body {
     background: var(--prim);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
 }
 
 .upload-section {
@@ -65,7 +67,8 @@ textarea {
     margin-bottom: 10px;
 }
 
-button, input::file-selector-button  {
+button,
+input::file-selector-button {
     padding: 10px;
     background-color: var(--accent);
     color: #fff;
@@ -74,10 +77,11 @@ button, input::file-selector-button  {
     cursor: pointer;
 }
 
-button:hover, input::file-selector-button:hover {
-    background-color: #1565ac;
+button:hover,
+input::file-selector-button:hover {
+    background-color: var(--sec);
     transition: 0.5s;
-    transform: scale(1.025);
+    transform: scale(0.75);
 }
 
 #results {
@@ -98,6 +102,21 @@ button:hover, input::file-selector-button:hover {
     background-color: #ffeb3b;
     /* Highlight color */
     font-weight: bold;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
 }
 
 /* Responsive Styles */
