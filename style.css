@@ -19,6 +19,7 @@ body {
 }
 
 .info-section {
+    margin-top: 20px;
     flex: 1;
     padding: 20px;
     margin-right: 20px;
@@ -30,6 +31,7 @@ body {
 }
 
 .container {
+    margin-top: 40px;
     flex: 2;
     padding: 20px;
     background: var(--prim);
