@@ -19,7 +19,6 @@ body {
 }
 
 .info-section {
-    margin-top: 20px;
     flex: 1;
     padding: 20px;
     margin-right: 20px;
@@ -27,17 +26,14 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-weight: 600;
-    animation: float 6s infinite;
 }
 
 .container {
-    margin-top: 40px;
     flex: 2;
     padding: 20px;
     background: var(--prim);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: float 6s ease-in-out infinite;
 }
 
 .upload-section {
@@ -104,21 +100,6 @@ input::file-selector-button:hover {
     background-color: #ffeb3b;
     /* Highlight color */
     font-weight: bold;
-}
-
-@keyframes float {
-	0% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
-	50% {
-		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-		transform: translatey(-10px);
-	}
-	100% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
 }
 
 /* Responsive Styles */

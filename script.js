@@ -1,4 +1,3 @@
-import 'animate.css';
 function longestCommonSubsequence(words1, words2) {
     const m = words1.length, n = words2.length;
     const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
